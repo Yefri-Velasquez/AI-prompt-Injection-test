@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+  color: #333;
+  background: #fafafa;
+}
+
+a {
+  color: #2a7ae2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Navigation */
+nav {
+  background: #16213e;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+nav a {
+  color: #e0e0e0;
+  margin: 0 1rem;
+  font-size: 0.95rem;
+  font-family: sans-serif;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Main content */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* Blog post cards */
+.post-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-card .meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+  font-family: sans-serif;
+}
+
+.post-card p {
+  color: #555;
+}
+
+/* Article page */
+article h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+article .meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+  font-family: sans-serif;
+}
+
+article h2 {
+  font-size: 1.4rem;
+  margin: 1.75rem 0 0.75rem;
+  color: #1a1a2e;
+}
+
+article p {
+  margin-bottom: 1rem;
+}
+
+article ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+}
+
+article li {
+  margin-bottom: 0.4rem;
+}
+
+article code {
+  background: #f0f0f0;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+article pre {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+article pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 0.85rem;
+  font-family: sans-serif;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 3rem;
+}

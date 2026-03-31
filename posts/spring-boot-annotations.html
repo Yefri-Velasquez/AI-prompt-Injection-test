@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essential Spring Boot Annotations - Spring Boot Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Spring Boot Blog</h1>
+    <p>Tutorials, guides, and tips for Java developers</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="what-is-spring-boot.html">What is Spring Boot?</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="spring-boot-annotations.html">Annotations</a>
+  </nav>
+
+  <div class="container">
+    <a href="../index.html" class="back-link">&larr; Back to all posts</a>
+
+    <article>
+      <h1>Essential Spring Boot Annotations</h1>
+      <div class="meta">March 30, 2026 &middot; 6 min read</div>
+
+      <p>Annotations are a core part of how Spring Boot works. They replace XML configuration with simple, readable markers on your classes and methods. Here are the ones you'll use most often.</p>
+
+      <h2>@SpringBootApplication</h2>
+      <p>The main entry point annotation. It combines three annotations into one:</p>
+      <ul>
+        <li><code>@Configuration</code> &mdash; marks the class as a source of bean definitions</li>
+        <li><code>@EnableAutoConfiguration</code> &mdash; enables Spring Boot's auto-configuration</li>
+        <li><code>@ComponentScan</code> &mdash; scans the current package for Spring components</li>
+      </ul>
+      <pre><code>@SpringBootApplication
+public class MyApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+    }
+}</code></pre>
+
+      <h2>@RestController</h2>
+      <p>Marks a class as a REST API controller. It combines <code>@Controller</code> and <code>@ResponseBody</code>, meaning every method returns data directly (not a view name).</p>
+      <pre><code>@RestController
+public class UserController {
+
+    @GetMapping("/users")
+    public List&lt;User&gt; getUsers() {
+        return userService.findAll();
+    }
+}</code></pre>
+
+      <h2>@GetMapping, @PostMapping, @PutMapping, @DeleteMapping</h2>
+      <p>Shortcut annotations for mapping HTTP methods to handler methods:</p>
+      <pre><code>@GetMapping("/items")        // handles GET requests
+@PostMapping("/items")       // handles POST requests
+@PutMapping("/items/{id}")   // handles PUT requests
+@DeleteMapping("/items/{id}")// handles DELETE requests</code></pre>
+
+      <h2>@RequestMapping</h2>
+      <p>The general-purpose mapping annotation. The shortcuts above are preferred for clarity, but <code>@RequestMapping</code> is useful for class-level path prefixes:</p>
+      <pre><code>@RestController
+@RequestMapping("/api/v1")
+public class ApiController {
+
+    @GetMapping("/status")  // maps to /api/v1/status
+    public String status() {
+        return "OK";
+    }
+}</code></pre>
+
+      <h2>@Autowired</h2>
+      <p>Injects a dependency automatically. Spring finds a matching bean and provides it:</p>
+      <pre><code>@Service
+public class OrderService {
+
+    @Autowired
+    private PaymentService paymentService;
+}</code></pre>
+      <p><strong>Tip:</strong> Constructor injection is preferred over field injection for testability:</p>
+      <pre><code>@Service
+public class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}</code></pre>
+
+      <h2>@Service, @Repository, @Component</h2>
+      <p>These mark classes as Spring-managed beans. They all do the same thing technically, but convey intent:</p>
+      <ul>
+        <li><code>@Component</code> &mdash; generic Spring bean</li>
+        <li><code>@Service</code> &mdash; business logic layer</li>
+        <li><code>@Repository</code> &mdash; data access layer (also translates database exceptions)</li>
+      </ul>
+
+      <h2>@Value</h2>
+      <p>Injects values from <code>application.properties</code>:</p>
+      <pre><code>@Value("${app.name}")
+private String appName;
+
+@Value("${server.port:8080}")  // with default
+private int port;</code></pre>
+
+      <h2>@PathVariable and @RequestParam</h2>
+      <p>Extract values from the URL:</p>
+      <pre><code>// /users/42 → id = 42
+@GetMapping("/users/{id}")
+public User getUser(@PathVariable Long id) { ... }
+
+// /search?q=spring → query = "spring"
+@GetMapping("/search")
+public List&lt;Result&gt; search(@RequestParam String q) { ... }</code></pre>
+
+      <h2>@Entity and @Table</h2>
+      <p>JPA annotations for mapping classes to database tables:</p>
+      <pre><code>@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+}</code></pre>
+
+      <h2>Summary</h2>
+      <p>These annotations handle 90% of what you'll need in a typical Spring Boot application. The key idea is that annotations replace configuration files &mdash; they tell Spring what your classes do and how they connect, so you can focus on business logic.</p>
+    </article>
+  </div>
+
+  <footer>
+    &copy; 2026 Spring Boot Blog. Built with plain HTML &amp; CSS.
+  </footer>
+
+</body>
+</html>

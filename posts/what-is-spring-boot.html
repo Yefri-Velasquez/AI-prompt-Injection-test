@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is Spring Boot? - Spring Boot Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Spring Boot Blog</h1>
+    <p>Tutorials, guides, and tips for Java developers</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="what-is-spring-boot.html">What is Spring Boot?</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="spring-boot-annotations.html">Annotations</a>
+  </nav>
+
+  <div class="container">
+    <a href="../index.html" class="back-link">&larr; Back to all posts</a>
+
+    <article>
+      <h1>What is Spring Boot?</h1>
+      <div class="meta">March 30, 2026 &middot; 5 min read</div>
+
+      <p>Spring Boot is an open-source Java framework that makes it easy to create stand-alone, production-ready Spring applications. It was created by Pivotal (now part of VMware) and first released in 2014.</p>
+
+      <h2>The Problem Spring Boot Solves</h2>
+      <p>The Spring Framework is powerful, but setting up a Spring project traditionally required a lot of boilerplate configuration &mdash; XML files, dependency management, server setup, and more. Spring Boot eliminates most of that complexity by providing sensible defaults and auto-configuration.</p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Auto-configuration</strong> &mdash; Spring Boot automatically configures your application based on the dependencies you include. Add a database driver and it sets up a DataSource for you.</li>
+        <li><strong>Embedded server</strong> &mdash; No need to deploy WAR files to an external server. Spring Boot includes Tomcat, Jetty, or Undertow out of the box.</li>
+        <li><strong>Starter dependencies</strong> &mdash; Curated dependency sets (like <code>spring-boot-starter-web</code>) bundle everything you need for a specific feature.</li>
+        <li><strong>Production-ready features</strong> &mdash; Built-in health checks, metrics, and externalized configuration via Spring Boot Actuator.</li>
+        <li><strong>No code generation</strong> &mdash; Spring Boot does not generate code or require XML configuration.</li>
+      </ul>
+
+      <h2>A Minimal Example</h2>
+      <p>Here's a complete Spring Boot REST application in a single file:</p>
+      <pre><code>@SpringBootApplication
+@RestController
+public class HelloApp {
+
+    public static void main(String[] args) {
+        SpringApplication.run(HelloApp.class, args);
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, Spring Boot!";
+    }
+}</code></pre>
+      <p>That's it. Run it, and you have a web server listening on port 8080 that responds to <code>GET /hello</code>.</p>
+
+      <h2>Spring Boot vs Spring Framework</h2>
+      <p>Spring Boot is <em>not</em> a replacement for the Spring Framework. It sits on top of it. Think of Spring as the engine and Spring Boot as the car &mdash; it packages everything together so you can drive without building the engine from scratch.</p>
+
+      <ul>
+        <li><strong>Spring Framework</strong> &mdash; Provides the core features: dependency injection, AOP, data access, MVC, etc.</li>
+        <li><strong>Spring Boot</strong> &mdash; Provides auto-configuration, embedded servers, and opinionated defaults on top of Spring.</li>
+      </ul>
+
+      <h2>When to Use Spring Boot</h2>
+      <p>Spring Boot is a great choice when you want to:</p>
+      <ul>
+        <li>Build REST APIs or microservices</li>
+        <li>Get a project running quickly without heavy configuration</li>
+        <li>Create self-contained deployable JARs</li>
+        <li>Follow convention over configuration</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Spring Boot dramatically reduces the effort needed to build Spring applications. Its opinionated defaults, embedded server, and auto-configuration let you focus on writing business logic instead of wrestling with setup. If you're building Java web applications today, Spring Boot is the standard starting point.</p>
+    </article>
+  </div>
+
+  <footer>
+    &copy; 2026 Spring Boot Blog. Built with plain HTML &amp; CSS.
+  </footer>
+
+</body>
+</html>

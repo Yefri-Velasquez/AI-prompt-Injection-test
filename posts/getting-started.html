@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with Spring Boot - Spring Boot Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Spring Boot Blog</h1>
+    <p>Tutorials, guides, and tips for Java developers</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="what-is-spring-boot.html">What is Spring Boot?</a>
+    <a href="getting-started.html">Getting Started</a>
+    <a href="spring-boot-annotations.html">Annotations</a>
+  </nav>
+
+  <div class="container">
+    <a href="../index.html" class="back-link">&larr; Back to all posts</a>
+
+    <article>
+      <h1>Getting Started with Spring Boot</h1>
+      <div class="meta">March 30, 2026 &middot; 7 min read</div>
+
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Java 17 or later installed</li>
+        <li>An IDE (IntelliJ IDEA, VS Code, or Eclipse)</li>
+        <li>Maven or Gradle (Maven is used in this guide)</li>
+      </ul>
+
+      <h2>Step 1: Generate a Project with Spring Initializr</h2>
+      <p>The easiest way to start is with <a href="https://start.spring.io" target="_blank">start.spring.io</a>. Configure your project:</p>
+      <ul>
+        <li><strong>Project:</strong> Maven</li>
+        <li><strong>Language:</strong> Java</li>
+        <li><strong>Spring Boot:</strong> 3.x (latest stable)</li>
+        <li><strong>Group:</strong> <code>com.example</code></li>
+        <li><strong>Artifact:</strong> <code>demo</code></li>
+        <li><strong>Dependencies:</strong> Spring Web</li>
+      </ul>
+      <p>Click <strong>Generate</strong> to download a ZIP file, then extract it.</p>
+
+      <h2>Step 2: Explore the Project Structure</h2>
+      <pre><code>demo/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/demo/
+│   │   │   └── DemoApplication.java
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+│       └── java/com/example/demo/
+│           └── DemoApplicationTests.java
+├── pom.xml
+└── mvnw</code></pre>
+
+      <h2>Step 3: Write a REST Controller</h2>
+      <p>Create a new file <code>HelloController.java</code> in the same package:</p>
+      <pre><code>package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/")
+    public String home() {
+        return "Welcome to my Spring Boot app!";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "This is a demo Spring Boot application.";
+    }
+}</code></pre>
+
+      <h2>Step 4: Run the Application</h2>
+      <p>From the project root, run:</p>
+      <pre><code>./mvnw spring-boot:run</code></pre>
+      <p>You should see output ending with:</p>
+      <pre><code>Started DemoApplication in 2.3 seconds</code></pre>
+      <p>Open <code>http://localhost:8080</code> in your browser and you'll see your response.</p>
+
+      <h2>Step 5: Add application.properties</h2>
+      <p>You can customize behavior in <code>src/main/resources/application.properties</code>:</p>
+      <pre><code># Change the default port
+server.port=9090
+
+# Set the application name
+spring.application.name=my-demo-app</code></pre>
+
+      <h2>Step 6: Package as a JAR</h2>
+      <p>To create a self-contained executable JAR:</p>
+      <pre><code>./mvnw clean package
+java -jar target/demo-0.0.1-SNAPSHOT.jar</code></pre>
+      <p>This single JAR includes an embedded Tomcat server &mdash; no external application server needed.</p>
+
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Add a database with <code>spring-boot-starter-data-jpa</code></li>
+        <li>Add security with <code>spring-boot-starter-security</code></li>
+        <li>Explore Spring Boot Actuator for production monitoring</li>
+        <li>Check out the <a href="spring-boot-annotations.html">annotations guide</a> to understand what's happening under the hood</li>
+      </ul>
+    </article>
+  </div>
+
+  <footer>
+    &copy; 2026 Spring Boot Blog. Built with plain HTML &amp; CSS.
+  </footer>
+
+</body>
+</html>
